@@ -1,0 +1,15 @@
+CREATE TABLE users (
+    id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    first_name VARCHAR(50) NOT NULL,
+    last_name VARCHAR(50) NOT NULL,
+    email VARCHAR(100) NOT NULL UNIQUE,
+    password VARCHAR(255) NULL,           -- Admin / Employee ke liye
+    google_id VARCHAR(255) UNIQUE,        -- Google OAuth ID
+    profile_pic VARCHAR(500),
+    is_email_verified BOOLEAN DEFAULT FALSE,
+    role ENUM('ROLE_CUSTOMER', 'ROLE_ADMIN', 'ROLE_SELLER', 'ROLE_EMPLOYEE') NOT NULL DEFAULT 'ROLE_CUSTOMER',
+    department ENUM('LOGISTICS', 'SUPPORT', 'CATALOG', 'FINANCE') NULL,
+    phone_number VARCHAR(20) UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);

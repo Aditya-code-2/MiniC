@@ -1,0 +1,1 @@
+import java.net.*; import java.io.*; public class TestHttp { public static void main(String[] args) { try { URL url = new URL(" https://oauth2.googleapis.com/token\); HttpURLConnection con = (HttpURLConnection) url.openConnection(); con.setRequestMethod(\POST\); System.out.println(con.getResponseCode()); } catch (Exception e) { e.printStackTrace(); } } }
