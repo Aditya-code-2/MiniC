@@ -31,7 +31,7 @@ public class SecurityConfig {
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/auth/**", "/login/**", "/oauth2/**", "/api/v1/products/**").permitAll()
+                .requestMatchers("/api/v1/auth/**", "/login/**", "/oauth2/**", "/api/v1/products/**", "/api/v1/categories/**").permitAll()
                 .anyRequest().authenticated()
             )
             .oauth2Login(oauth2 -> oauth2
@@ -65,7 +65,7 @@ public class SecurityConfig {
             });
 
             // Redirect to React Frontend
-            String redirectUrl = "http://localhost:3000/oauth-success?email=" + email 
+            String redirectUrl = "http://localhost:3001/oauth-success?email=" + email 
                     + "&name=" + java.net.URLEncoder.encode(name, "UTF-8")
                     + "&role=" + user.getRole().name()
                     + "&userId=" + user.getId();
@@ -76,7 +76,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:3000"));
+        config.setAllowedOrigins(List.of("http://localhost:3000", "http://localhost:3001"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);

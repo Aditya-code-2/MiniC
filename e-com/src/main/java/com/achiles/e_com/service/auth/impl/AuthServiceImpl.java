@@ -1,12 +1,14 @@
 package com.achiles.e_com.service.auth.impl;
 
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Value;
 import com.achiles.e_com.dto.auth.*;
 import com.achiles.e_com.entity.User;
 import com.achiles.e_com.repository.UserRepository;
 import com.achiles.e_com.service.auth.AuthService;
 import lombok.RequiredArgsConstructor;
 
+import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Optional;
 
 @Service
@@ -14,8 +16,15 @@ import java.util.Optional;
 public class AuthServiceImpl implements AuthService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    // --- Admin / Employee Traditional Registration ---
+    @Value("${app.admin.email}")
+    private String adminEmail;
+
+    @Value("${app.admin.password}")
+    private String adminPassword;
+
+    // --- Admin Traditional Registration ---
     @Override
     public AuthResponse register(RegisterRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {
@@ -24,9 +33,8 @@ public class AuthServiceImpl implements AuthService {
 
         User.Role role = request.getRole() != null ? request.getRole() : User.Role.ROLE_CUSTOMER;
 
-        if ((role == User.Role.ROLE_ADMIN || role == User.Role.ROLE_EMPLOYEE) 
-                && (request.getPassword() == null || request.getPassword().isBlank())) {
-            throw new RuntimeException("Error: Password is required for Admin and Employee accounts!");
+        if (role == User.Role.ROLE_ADMIN && (request.getPassword() == null || request.getPassword().isBlank())) {
+            throw new RuntimeException("Error: Password is required for Admin accounts!");
         }
 
         String nameInput = request.getName() != null ? request.getName().trim() : "";
@@ -43,7 +51,7 @@ public class AuthServiceImpl implements AuthService {
                 .firstName(firstName)
                 .lastName(lastName)
                 .email(request.getEmail())
-                .password(request.getPassword())
+                .password(request.getPassword() != null && !request.getPassword().isBlank() ? passwordEncoder.encode(request.getPassword()) : null)
                 .role(role)
                 .build();
 
@@ -58,14 +66,27 @@ public class AuthServiceImpl implements AuthService {
                 .build();
     }
 
-    // --- Admin / Employee Password Login ---
+    // --- Admin Password Login ---
     @Override
     public AuthResponse login(LoginRequest request) {
+        if (request.getEmail().equals(adminEmail)) {
+            if (!request.getPassword().equals(adminPassword)) {
+                throw new RuntimeException("Invalid Admin credentials!");
+            }
+            return AuthResponse.builder()
+                    .userId(0L) // Or fetch if exists in DB
+                    .name("Admin")
+                    .email(adminEmail)
+                    .role(User.Role.ROLE_ADMIN.name())
+                    .message("Admin logged in successfully!")
+                    .build();
+        }
+
         User user = userRepository.findByEmail(request.getEmail())
                 .orElseThrow(() -> new RuntimeException("User not found with email: " + request.getEmail()));
 
         if (user.getPassword() != null && !user.getPassword().isEmpty()) {
-            if (!user.getPassword().equals(request.getPassword())) {
+            if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
                 throw new RuntimeException("Invalid credentials!");
             }
         } else {
@@ -81,7 +102,7 @@ public class AuthServiceImpl implements AuthService {
                 .build();
     }
 
-    // --- Customer / Seller: Send Email OTP ---
+    // --- Customer: Send Email OTP ---
     @Override
     public String sendEmailOtp(SendEmailOtpRequest request) {
         // 1. Generate 6-digit random OTP
@@ -91,7 +112,7 @@ public class AuthServiceImpl implements AuthService {
         return "OTP sent successfully to " + request.getEmail();
     }
 
-    // --- Customer / Seller: Verify Email OTP & Login/Register ---
+    // --- Customer: Verify Email OTP & Login/Register ---
     @Override
     public AuthResponse verifyEmailOtp(VerifyEmailOtpRequest request) {
        
@@ -120,7 +141,7 @@ public class AuthServiceImpl implements AuthService {
                 .build();
     }
 
-    // --- Customer / Seller: Google OAuth Login ---
+    // --- Customer: Google OAuth Login ---
     @Override
     public AuthResponse loginWithGoogle(GoogleLoginRequest request) {
         
@@ -138,11 +159,8 @@ public class AuthServiceImpl implements AuthService {
                 userRepository.save(user);
             }
         } else {
-            // Dynamic Role Selection (Customer / Seller)
+            // Dynamic Role Selection (Customer)
             User.Role assignedRole = User.Role.ROLE_CUSTOMER;
-            if ("ROLE_SELLER".equalsIgnoreCase(request.getRole())) {
-                assignedRole = User.Role.ROLE_SELLER;
-            }
 
             // Dynamic Name Split Logic
             String nameInput = request.getName() != null ? request.getName().trim() : "Google User";

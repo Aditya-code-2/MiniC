@@ -1,0 +1,48 @@
+name: Backend CI/CD
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'e-com/**'
+      - '.github/workflows/backend-ci-cd.yml'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'e-com/**'
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./e-com
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up JDK 17
+      uses: actions/setup-java@v3
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+        cache: maven
+    - name: Build with Maven
+      run: |
+        chmod +x mvnw
+        ./mvnw -B package --file pom.xml
+      
+  deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+    - name: Trigger Render Deploy
+      # To set this up:
+      # 1. Get your Deploy Hook URL from your Web Service settings in Render dashboard.
+      # 2. Go to your GitHub repository settings -> Secrets and variables -> Actions.
+      # 3. Add a new repository secret named RENDER_DEPLOY_HOOK_URL with the hook URL as the value.
+      run: |
+        if [ -n "${{ secrets.RENDER_DEPLOY_HOOK_URL }}" ]; then
+          curl -X POST "${{ secrets.RENDER_DEPLOY_HOOK_URL }}"
+        else
+          echo "RENDER_DEPLOY_HOOK_URL secret not found. Skipping deploy."
+        fi

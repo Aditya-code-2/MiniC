@@ -40,23 +40,6 @@ public class User {
 
     public enum Role {
         ROLE_CUSTOMER,
-        ROLE_ADMIN,
-        ROLE_SELLER,
-        ROLE_EMPLOYEE
+        ROLE_ADMIN
     }
-
-    // Employee Details:
-
-@Column(name = "phone_number", unique = true)
-private String phoneNumber;
-
-@Enumerated(EnumType.STRING)
-private Department department;
-
-public enum Department {
-    LOGISTICS,
-    SUPPORT,
-    CATALOG,
-    FINANCE
-}
 }
