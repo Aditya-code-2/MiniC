@@ -6,7 +6,6 @@ const AdminDashboard = () => {
   const { user } = useContext(AuthContext);
   const [activeTab, setActiveTab] = useState('dashboard');
   const [financeStats, setFinanceStats] = useState(null);
-  const [pendingPayouts, setPendingPayouts] = useState([]);
   const [orders, setOrders] = useState([]);
   const [categories, setCategories] = useState([]);
   const [products, setProducts] = useState([]);
