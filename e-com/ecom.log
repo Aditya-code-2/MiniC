@@ -9287,3 +9287,216 @@ Action:
 
 Identify and stop the process that's listening on port 8086 or configure this application to listen on another port.
 
+2026-08-25T22:00:26.691+05:30  INFO 5144 --- [e-com] [main] com.achiles.e_com.EComApplication        : Starting EComApplication using Java 17.0.16 with PID 5144 (C:\Users\Lenovo\Downloads\e-com\e-com\target\classes started by Lenovo in C:\Users\Lenovo\Downloads\e-com\e-com)
+2026-08-25T22:00:26.692+05:30  INFO 5144 --- [e-com] [main] com.achiles.e_com.EComApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-08-25T22:00:27.437+05:30  INFO 5144 --- [e-com] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-08-25T22:00:27.555+05:30  INFO 5144 --- [e-com] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 106 ms. Found 15 JPA repository interfaces.
+2026-08-25T22:00:28.153+05:30  INFO 5144 --- [e-com] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8086 (http)
+2026-08-25T22:00:28.180+05:30  INFO 5144 --- [e-com] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-08-25T22:00:28.181+05:30  INFO 5144 --- [e-com] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-08-25T22:00:28.257+05:30  INFO 5144 --- [e-com] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1514 ms
+2026-08-25T22:00:28.535+05:30  INFO 5144 --- [e-com] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-08-25T22:00:28.799+05:30  INFO 5144 --- [e-com] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@22da200e
+2026-08-25T22:00:28.799+05:30  INFO 5144 --- [e-com] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-08-25T22:00:28.811+05:30  INFO 5144 --- [e-com] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/ecom?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC (MySQL 5.5)
+2026-08-25T22:00:29.035+05:30  INFO 5144 --- [e-com] [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.046s)
+2026-08-25T22:00:29.051+05:30  INFO 5144 --- [e-com] [main] o.f.core.internal.command.DbMigrate      : Current version of schema `ecom`: 8
+2026-08-25T22:00:29.072+05:30  INFO 5144 --- [e-com] [main] o.f.core.internal.command.DbMigrate      : Schema `ecom` is up to date. No migration necessary.
+2026-08-25T22:00:29.168+05:30  INFO 5144 --- [e-com] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-08-25T22:00:29.247+05:30  INFO 5144 --- [e-com] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
+2026-08-25T22:00:29.704+05:30  INFO 5144 --- [e-com] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-08-25T22:00:29.797+05:30  WARN 5144 --- [e-com] [main] org.hibernate.orm.core                   : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly.The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2026-08-25T22:00:29.814+05:30  INFO 5144 --- [e-com] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/ecom?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 5.5.5
+	Default catalog/schema: ecom/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-08-25T22:00:31.079+05:30  INFO 5144 --- [e-com] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-08-25T22:00:31.085+05:30  INFO 5144 --- [e-com] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-08-25T22:00:31.155+05:30  INFO 5144 --- [e-com] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-08-25T22:00:32.156+05:30  WARN 5144 --- [e-com] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-08-25T22:00:32.201+05:30 DEBUG 5144 --- [e-com] [main] swordEncoderAuthenticationManagerBuilder : No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2026-08-25T22:00:32.468+05:30 DEBUG 5144 --- [e-com] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, OAuth2AuthorizationRequestRedirectFilter, OAuth2LoginAuthenticationFilter, JwtAuthenticationFilter, DefaultResourcesFilter, DefaultLoginPageGeneratingFilter, DefaultLogoutPageGeneratingFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-08-25T22:00:32.859+05:30  INFO 5144 --- [e-com] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8086 (http) with context path '/'
+2026-08-25T22:00:32.861+05:30  INFO 5144 --- [e-com] [main] com.achiles.e_com.EComApplication        : Started EComApplication in 6.676 seconds (process running for 7.385)
+2026-08-25T22:01:51.551+05:30  INFO 5144 --- [e-com] [http-nio-8086-exec-4] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-08-25T22:01:51.572+05:30  INFO 5144 --- [e-com] [http-nio-8086-exec-4] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-08-25T22:01:51.663+05:30  INFO 5144 --- [e-com] [http-nio-8086-exec-4] o.s.web.servlet.DispatcherServlet        : Completed initialization in 91 ms
+2026-08-25T22:01:51.723+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/products
+2026-08-25T22:01:51.723+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/categories
+2026-08-25T22:01:51.726+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/categories
+2026-08-25T22:01:51.723+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/wishlist/count?userId=1
+2026-08-25T22:01:51.726+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/cart/user/1
+2026-08-25T22:01:51.724+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/products
+2026-08-25T22:01:51.849+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/wishlist/items?userId=1
+2026-08-25T22:01:52.162+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/wishlist/count?userId=1
+2026-08-25T22:01:52.162+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/cart/user/1
+2026-08-25T22:01:52.162+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/products
+2026-08-25T22:01:52.162+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/categories
+2026-08-25T22:01:52.162+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/wishlist/items?userId=1
+2026-08-25T22:01:52.473+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-08-25T22:01:52.473+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-08-25T22:01:52.473+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-08-25T22:01:52.473+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] o.s.s.w.session.SessionManagementFilter  : Request requested invalid session id 226F2FD7AC2C5E66ACFD292AF60BDDF7
+2026-08-25T22:01:52.473+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-08-25T22:01:52.473+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-6] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-08-25T22:01:52.473+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] o.s.s.w.session.SessionManagementFilter  : Request requested invalid session id 226F2FD7AC2C5E66ACFD292AF60BDDF7
+2026-08-25T22:01:52.473+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] o.s.s.w.session.SessionManagementFilter  : Request requested invalid session id 226F2FD7AC2C5E66ACFD292AF60BDDF7
+2026-08-25T22:01:52.473+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] o.s.s.w.session.SessionManagementFilter  : Request requested invalid session id 226F2FD7AC2C5E66ACFD292AF60BDDF7
+2026-08-25T22:01:52.473+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-6] o.s.s.w.session.SessionManagementFilter  : Request requested invalid session id 226F2FD7AC2C5E66ACFD292AF60BDDF7
+2026-08-25T22:01:52.482+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/products
+2026-08-25T22:01:52.482+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/categories
+2026-08-25T22:01:52.509+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], Not [And [Or [PathPattern [/login], PathPattern [/favicon.ico]], And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@16d9c898, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]]], org.springframework.security.config.annotation.web.configurers.oauth2.client.OAuth2LoginConfigurer$$Lambda$2070/0x000001489ac8a228@5e22cf2e]
+2026-08-25T22:01:52.509+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], Not [And [Or [PathPattern [/login], PathPattern [/favicon.ico]], And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@16d9c898, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]]], org.springframework.security.config.annotation.web.configurers.oauth2.client.OAuth2LoginConfigurer$$Lambda$2070/0x000001489ac8a228@5e22cf2e]
+2026-08-25T22:01:52.509+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], Not [And [Or [PathPattern [/login], PathPattern [/favicon.ico]], And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@16d9c898, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]]], org.springframework.security.config.annotation.web.configurers.oauth2.client.OAuth2LoginConfigurer$$Lambda$2070/0x000001489ac8a228@5e22cf2e]
+2026-08-25T22:01:52.516+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@bbfb76
+2026-08-25T22:01:52.516+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@bbfb76
+2026-08-25T22:01:52.524+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] o.s.s.web.DefaultRedirectStrategy        : Redirecting to /oauth2/authorization/google
+2026-08-25T22:01:52.516+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@bbfb76
+2026-08-25T22:01:52.524+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] o.s.s.web.DefaultRedirectStrategy        : Redirecting to /oauth2/authorization/google
+2026-08-25T22:01:52.524+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] o.s.s.web.DefaultRedirectStrategy        : Redirecting to /oauth2/authorization/google
+2026-08-25T22:01:52.538+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /oauth2/authorization/google
+2026-08-25T22:01:52.538+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /oauth2/authorization/google
+2026-08-25T22:01:52.538+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /oauth2/authorization/google
+2026-08-25T22:01:52.552+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /oauth2/authorization/google
+2026-08-25T22:01:53.212+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/categories
+2026-08-25T22:01:53.219+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/products
+2026-08-25T22:01:53.224+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-9] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-08-25T22:01:53.233+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-08-25T22:01:53.236+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] o.s.s.w.session.SessionManagementFilter  : Request requested invalid session id 226F2FD7AC2C5E66ACFD292AF60BDDF7
+2026-08-25T22:01:53.236+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-9] o.s.s.w.session.SessionManagementFilter  : Request requested invalid session id 226F2FD7AC2C5E66ACFD292AF60BDDF7
+2026-08-25T22:01:53.236+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/products
+2026-08-25T22:01:53.236+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/categories
+2026-08-25T22:01:53.463+05:30  WARN 5144 --- [e-com] [http-nio-8086-exec-5] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [835] milliseconds.
+2026-08-25T22:01:53.475+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-5] o.s.s.web.DefaultRedirectStrategy        : Redirecting to https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=505869046781-r5hn1960bhi87742mntldrf67ih0va4o.apps.googleusercontent.com&scope=profile%20email&state=ttT0wYYfcMt2-9BM2Qy9NBPVOQIyZVOZnfZO-UbvMQs%3D&redirect_uri=http://localhost:8086/login/oauth2/code/google&code_challenge=EIc9EFdGDcDst9siUwCM--84_s5Y-Zykr7hoEvETNQE&code_challenge_method=S256
+2026-08-25T22:01:53.489+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /oauth2/authorization/google
+2026-08-25T22:01:53.493+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] o.s.s.web.DefaultRedirectStrategy        : Redirecting to https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=505869046781-r5hn1960bhi87742mntldrf67ih0va4o.apps.googleusercontent.com&scope=profile%20email&state=Dw5wAXz0kc0XW6jt_P7HrtCEnvMHmZsLm-gYDazfBJE%3D&redirect_uri=http://localhost:8086/login/oauth2/code/google&code_challenge=Kq0-afxNGhGvJW99ptnYi24palYvBI8zKBjxkHcWVAY&code_challenge_method=S256
+2026-08-25T22:01:53.495+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /oauth2/authorization/google
+2026-08-25T22:01:53.495+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] o.s.s.web.DefaultRedirectStrategy        : Redirecting to https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=505869046781-r5hn1960bhi87742mntldrf67ih0va4o.apps.googleusercontent.com&scope=profile%20email&state=2A6iZ3TaVcmQAqHWe0Ui529Fh18i-l9lT9CiaechE-c%3D&redirect_uri=http://localhost:8086/login/oauth2/code/google&code_challenge=DemvawuLROdQWe00Mi49ejc6d4seNuilfqNPscbcnhY&code_challenge_method=S256
+2026-08-25T22:02:11.316+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/finance/dashboard
+2026-08-25T22:02:11.318+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/finance/dashboard
+2026-08-25T22:02:11.323+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/finance/dashboard
+2026-08-25T22:02:11.350+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-08-25T22:02:11.354+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], Not [And [Or [PathPattern [/login], PathPattern [/favicon.ico]], And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@16d9c898, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]]], org.springframework.security.config.annotation.web.configurers.oauth2.client.OAuth2LoginConfigurer$$Lambda$2070/0x000001489ac8a228@5e22cf2e]
+2026-08-25T22:02:11.354+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@bbfb76
+2026-08-25T22:02:11.356+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] o.s.s.web.DefaultRedirectStrategy        : Redirecting to /oauth2/authorization/google
+2026-08-25T22:02:11.369+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/finance/dashboard
+2026-08-25T22:02:11.369+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /oauth2/authorization/google
+2026-08-25T22:02:11.381+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /oauth2/authorization/google
+2026-08-25T22:02:11.384+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-9] o.s.s.web.DefaultRedirectStrategy        : Redirecting to https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=505869046781-r5hn1960bhi87742mntldrf67ih0va4o.apps.googleusercontent.com&scope=profile%20email&state=gZvK9ANB_JeKotBhaLQIkJdjxFPI9_lKeUuw1BT6Oos%3D&redirect_uri=http://localhost:8086/login/oauth2/code/google&code_challenge=KRngGSePAuV73f96icD4SRaCRIw6OkRAyeHmO4EKFHU&code_challenge_method=S256
+2026-08-25T22:02:11.390+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-08-25T22:02:11.390+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] s.w.a.DelegatingAuthenticationEntryPoint : Trying to match using And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], Not [And [Or [PathPattern [/login], PathPattern [/favicon.ico]], And [Not [RequestHeaderRequestMatcher [expectedHeaderName=X-Requested-With, expectedHeaderValue=XMLHttpRequest]], MediaTypeRequestMatcher [contentNegotiationStrategy=org.springframework.web.accept.ContentNegotiationManager@16d9c898, matchingMediaTypes=[application/xhtml+xml, image/*, text/html, text/plain], useEquals=false, ignoredMediaTypes=[*/*]]]]], org.springframework.security.config.annotation.web.configurers.oauth2.client.OAuth2LoginConfigurer$$Lambda$2070/0x000001489ac8a228@5e22cf2e]
+2026-08-25T22:02:11.396+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] s.w.a.DelegatingAuthenticationEntryPoint : Match found! Executing org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint@bbfb76
+2026-08-25T22:02:11.396+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] o.s.s.web.DefaultRedirectStrategy        : Redirecting to /oauth2/authorization/google
+2026-08-25T22:02:11.403+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /oauth2/authorization/google
+2026-08-25T22:02:11.403+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] o.s.s.web.DefaultRedirectStrategy        : Redirecting to https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=505869046781-r5hn1960bhi87742mntldrf67ih0va4o.apps.googleusercontent.com&scope=profile%20email&state=CgVWmeR5onpEbOCzOVwrV_Ts6ObNtEMvOIe1QY3PCOU%3D&redirect_uri=http://localhost:8086/login/oauth2/code/google&code_challenge=5EjNoTB_LzFG7K4QA4jzTIM9HAwLO1T6drAKysswKdY&code_challenge_method=S256
+2026-08-25T22:02:16.531+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/products
+2026-08-25T22:02:16.531+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/categories
+2026-08-25T22:02:16.535+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-5] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-08-25T22:02:16.534+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-08-25T22:02:16.542+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/categories
+2026-08-25T22:02:16.538+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/products
+2026-08-25T22:02:16.678+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/categories
+2026-08-25T22:02:16.678+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/products
+2026-08-25T22:02:16.682+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-1] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-08-25T22:02:16.682+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-08-25T22:02:16.687+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/products
+2026-08-25T22:02:16.688+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/categories
+2026-08-25T22:02:16.711+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/categories
+2026-08-25T22:02:16.715+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-08-25T22:02:16.718+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/categories
+2026-08-25T22:02:16.813+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/products
+2026-08-25T22:02:16.814+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-08-25T22:02:16.814+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/products
+2026-08-25T22:02:19.547+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /oauth2/authorization/google?role=user
+2026-08-25T22:02:19.551+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-6] o.s.s.web.DefaultRedirectStrategy        : Redirecting to https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=505869046781-r5hn1960bhi87742mntldrf67ih0va4o.apps.googleusercontent.com&scope=profile%20email&state=5t6cxu_F2PaGEdOEb_xF4IgUzHNRL8m-EugjjLRrk38%3D&redirect_uri=http://localhost:8086/login/oauth2/code/google&code_challenge=8XGfTSD4nnI7q5Rc70tBx-Xv_fI69ieOoYqNzHKqpbQ&code_challenge_method=S256
+2026-08-25T22:02:25.194+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /login/oauth2/code/google?state=5t6cxu_F2PaGEdOEb_xF4IgUzHNRL8m-EugjjLRrk38%3D&iss=https%3A%2F%2Faccounts.google.com&code=4%2F0ATsMZqDmv0rX1K-GslAbZKZJNUQnOlcK2W6nHxpMwS0ONfLX7o94LMDpeykp8bkgRTZuNg&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=none
+2026-08-25T22:02:26.513+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-9] .s.ChangeSessionIdAuthenticationStrategy : Changed session id from 8485C56ECFFE3AEA47B0331AF10FCE49
+2026-08-25T22:02:26.513+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-9] .s.o.c.w.OAuth2LoginAuthenticationFilter : Set SecurityContextHolder to OAuth2AuthenticationToken [Principal=Name: [105981805956784441908], Granted Authorities: [[OAUTH2_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{sub=105981805956784441908, name=Aditya Kumar, given_name=Aditya, family_name=Kumar, picture=https://lh3.googleusercontent.com/a/ACg8ocLc9WoWd-sIVyGnxolf5M--PAPJy9F9tSczQ9rlFrr0sH8vRymY7w=s96-c, email=adityakumar.net4566@gmail.com, email_verified=true}], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=8485C56ECFFE3AEA47B0331AF10FCE49], Granted Authorities=[SCOPE_openid, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_https://www.googleapis.com/auth/userinfo.email, OAUTH2_USER, FactorGrantedAuthority [authority=FACTOR_AUTHORIZATION_CODE, issuedAt=2026-08-25T16:32:26.505537700Z]]]
+2026-08-25T22:02:26.866+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/auth/exchange-code?code=ef4c1868-0be5-4033-a0b0-aca89a6a786f
+2026-08-25T22:02:26.869+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-08-25T22:02:26.871+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/auth/exchange-code?code=ef4c1868-0be5-4033-a0b0-aca89a6a786f
+2026-08-25T22:02:26.967+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/auth/exchange-code?code=ef4c1868-0be5-4033-a0b0-aca89a6a786f
+2026-08-25T22:02:26.974+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-08-25T22:02:26.975+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/auth/exchange-code?code=ef4c1868-0be5-4033-a0b0-aca89a6a786f
+2026-08-25T22:02:27.011+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/categories
+2026-08-25T22:02:27.016+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/categories
+2026-08-25T22:02:27.015+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/products
+2026-08-25T22:02:27.013+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/products
+2026-08-25T22:02:27.097+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/products
+2026-08-25T22:02:27.097+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/categories
+2026-08-25T22:02:27.097+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/cart/user/2
+2026-08-25T22:02:27.098+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/wishlist/count?userId=2
+2026-08-25T22:02:27.098+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/wishlist/items?userId=2
+2026-08-25T22:02:27.105+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/cart/user/2
+2026-08-25T22:02:27.106+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/wishlist/count?userId=2
+2026-08-25T22:02:27.129+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] .s.ChangeSessionIdAuthenticationStrategy : Changed session id from 979072C220142C307A7A91D719563283
+2026-08-25T22:02:27.132+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/categories
+2026-08-25T22:02:27.133+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/products
+2026-08-25T22:02:27.135+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/wishlist/count?userId=2
+2026-08-25T22:02:27.135+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/cart/user/2
+2026-08-25T22:02:27.173+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/wishlist/items?userId=2
+2026-08-25T22:02:27.204+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/wishlist/items?userId=2
+2026-08-25T22:02:27.231+05:30  WARN 5144 --- [e-com] [http-nio-8086-exec-3] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 1146, SQLState: 42S02
+2026-08-25T22:02:27.231+05:30  WARN 5144 --- [e-com] [http-nio-8086-exec-5] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 1146, SQLState: 42S02
+2026-08-25T22:02:27.229+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/categories
+2026-08-25T22:02:27.231+05:30  WARN 5144 --- [e-com] [http-nio-8086-exec-3] org.hibernate.orm.jdbc.error             : Table 'ecom.wishlists' doesn't exist
+2026-08-25T22:02:27.231+05:30  WARN 5144 --- [e-com] [http-nio-8086-exec-5] org.hibernate.orm.jdbc.error             : Table 'ecom.wishlists' doesn't exist
+2026-08-25T22:02:27.253+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/categories
+2026-08-25T22:02:27.276+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/products
+2026-08-25T22:02:27.294+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/products
+2026-08-25T22:02:31.684+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/wishlist/add?userId=2&productId=3
+2026-08-25T22:02:31.691+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-6] o.s.security.web.FilterChainProxy        : Securing POST /api/v1/wishlist/add?userId=2&productId=3
+2026-08-25T22:02:31.706+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-6] .s.ChangeSessionIdAuthenticationStrategy : Changed session id from EF67BAC28D245D7461F6167D64C56435
+2026-08-25T22:02:31.708+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-6] o.s.security.web.FilterChainProxy        : Secured POST /api/v1/wishlist/add?userId=2&productId=3
+2026-08-25T22:02:31.757+05:30  WARN 5144 --- [e-com] [http-nio-8086-exec-6] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 1146, SQLState: 42S02
+2026-08-25T22:02:31.761+05:30  WARN 5144 --- [e-com] [http-nio-8086-exec-6] org.hibernate.orm.jdbc.error             : Table 'ecom.wishlists' doesn't exist
+2026-08-25T22:02:37.572+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/cart/user/2/items
+2026-08-25T22:02:37.579+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] o.s.security.web.FilterChainProxy        : Securing POST /api/v1/cart/user/2/items
+2026-08-25T22:02:37.608+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] .s.ChangeSessionIdAuthenticationStrategy : Changed session id from DE2D66DA4492CFF63726105828604682
+2026-08-25T22:02:37.608+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] o.s.security.web.FilterChainProxy        : Secured POST /api/v1/cart/user/2/items
+2026-08-25T22:02:37.914+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/cart/user/2
+2026-08-25T22:02:37.922+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/cart/user/2
+2026-08-25T22:02:37.950+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] .s.ChangeSessionIdAuthenticationStrategy : Changed session id from B0F0F1E0840CC345A48CD8D7519D3390
+2026-08-25T22:02:37.952+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/cart/user/2
+2026-08-25T22:02:41.076+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-5] o.s.security.web.FilterChainProxy        : Securing POST /api/v1/cart/user/2/items
+2026-08-25T22:02:41.080+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-5] .s.ChangeSessionIdAuthenticationStrategy : Changed session id from 620938ABB6098E0BF709EA393740C3C9
+2026-08-25T22:02:41.080+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-5] o.s.security.web.FilterChainProxy        : Secured POST /api/v1/cart/user/2/items
+2026-08-25T22:02:41.135+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/cart/user/2
+2026-08-25T22:02:41.143+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] .s.ChangeSessionIdAuthenticationStrategy : Changed session id from E98F524C208DFA6279A6EC696A7E2E78
+2026-08-25T22:02:41.143+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/cart/user/2
+2026-08-25T22:02:43.255+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/cart/user/2
+2026-08-25T22:02:43.255+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/cart/user/2
+2026-08-25T22:02:43.259+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/cart/user/2
+2026-08-25T22:02:43.275+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] .s.ChangeSessionIdAuthenticationStrategy : Changed session id from 2D49C6CC65B2FE19FC53C8296F5AAB5D
+2026-08-25T22:02:43.283+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/cart/user/2
+2026-08-25T22:02:43.336+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/cart/user/2
+2026-08-25T22:02:43.349+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/cart/user/2
+2026-08-25T22:02:46.840+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/cart/user/2/items/5
+2026-08-25T22:02:46.845+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] o.s.security.web.FilterChainProxy        : Securing DELETE /api/v1/cart/user/2/items/5
+2026-08-25T22:02:46.877+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] .s.ChangeSessionIdAuthenticationStrategy : Changed session id from EBE9B60299400E93D42E2019C6818EC1
+2026-08-25T22:02:46.878+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] o.s.security.web.FilterChainProxy        : Secured DELETE /api/v1/cart/user/2/items/5
+2026-08-25T22:02:48.525+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/cart/user/2/items/4
+2026-08-25T22:02:48.532+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Securing DELETE /api/v1/cart/user/2/items/4
+2026-08-25T22:02:48.558+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] .s.ChangeSessionIdAuthenticationStrategy : Changed session id from 42485E33DECE66F0602FD033B8F38E15
+2026-08-25T22:02:48.561+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Secured DELETE /api/v1/cart/user/2/items/4
+2026-08-25T22:02:52.395+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/products
+2026-08-25T22:02:52.395+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-5] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/categories
+2026-08-25T22:02:52.395+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/categories
+2026-08-25T22:02:52.395+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/products
+2026-08-25T22:02:52.399+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/categories
+2026-08-25T22:02:52.400+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/products
+2026-08-25T22:02:52.409+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] .s.ChangeSessionIdAuthenticationStrategy : Changed session id from 6535A2444A77BB471645DE6C246224F5
+2026-08-25T22:02:52.409+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/products
+2026-08-25T22:02:52.411+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/categories
+2026-08-25T22:02:52.440+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/categories
+2026-08-25T22:02:52.483+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/categories
+2026-08-25T22:02:52.485+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/products
+2026-08-25T22:02:52.498+05:30 DEBUG 5144 --- [e-com] [http-nio-8086-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/products
