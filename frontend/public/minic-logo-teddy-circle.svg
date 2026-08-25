@@ -1,0 +1,32 @@
+<svg width="300" height="300" viewBox="55 55 190 190" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background badge -->
+  <circle cx="150" cy="150" r="95" fill="#E3F3EE"/>
+  <circle cx="150" cy="150" r="95" fill="none" stroke="#8FCDBB" stroke-width="2"/>
+
+  <!-- Teddy bear -->
+  <ellipse cx="150" cy="173" rx="38" ry="34" fill="#F6C9C1" stroke="#DA9C90" stroke-width="2"/>
+  <circle cx="150" cy="123" r="30" fill="#F6C9C1" stroke="#DA9C90" stroke-width="2"/>
+  <circle cx="121" cy="103" r="12" fill="#F6C9C1" stroke="#DA9C90" stroke-width="2"/>
+  <circle cx="179" cy="103" r="12" fill="#F6C9C1" stroke="#DA9C90" stroke-width="2"/>
+  <circle cx="121" cy="103" r="5" fill="#E8ACA0"/>
+  <circle cx="179" cy="103" r="5" fill="#E8ACA0"/>
+  <ellipse cx="122" cy="184" rx="14" ry="12" fill="#F6C9C1" stroke="#DA9C90" stroke-width="2"/>
+  <ellipse cx="178" cy="184" rx="14" ry="12" fill="#F6C9C1" stroke="#DA9C90" stroke-width="2"/>
+
+  <!-- Face -->
+  <circle cx="139" cy="122" r="3.5" fill="#5C4033"/>
+  <circle cx="161" cy="122" r="3.5" fill="#5C4033"/>
+  <ellipse cx="150" cy="134" rx="9" ry="6" fill="#FBE0DA"/>
+  <path d="M144 138 Q150 142 156 138" fill="none" stroke="#5C4033" stroke-width="1.8" stroke-linecap="round"/>
+
+  <!-- Paw pads -->
+  <circle cx="130" cy="168" r="5" fill="#FBE0DA"/>
+  <circle cx="170" cy="168" r="5" fill="#FBE0DA"/>
+
+  <!-- Sparkle -->
+  <path d="M190 101 L193.5 109 L202 110.5 L193.5 112 L190 120 L186.5 112 L178 110.5 L186.5 109 Z" fill="#F4D06F"/>
+
+  <!-- Small dots -->
+  <circle cx="98" cy="173" r="3" fill="#8FCDBB"/>
+  <circle cx="208" cy="193" r="2.5" fill="#F6C9C1"/>
+</svg>

@@ -1,0 +1,26 @@
+<svg width="680" height="300" viewBox="0 0 680 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background badge -->
+  <circle cx="150" cy="150" r="95" fill="#FFE3D1"/>
+  <circle cx="150" cy="150" r="95" fill="none" stroke="#F4A97F" stroke-width="2"/>
+
+  <!-- Gift box -->
+  <rect x="105" y="130" width="90" height="65" rx="8" fill="#FF9F68" stroke="#E8834A" stroke-width="2"/>
+  <rect x="105" y="130" width="90" height="18" rx="6" fill="#FFB989"/>
+  <rect x="143" y="118" width="14" height="77" fill="#FFDCC2"/>
+
+  <!-- Bow -->
+  <path d="M150 118 C130 100 108 108 118 122 C126 132 142 126 150 118 Z" fill="#FF7F4F" stroke="#E8834A" stroke-width="1.5"/>
+  <path d="M150 118 C170 100 192 108 182 122 C174 132 158 126 150 118 Z" fill="#FF7F4F" stroke="#E8834A" stroke-width="1.5"/>
+  <circle cx="150" cy="120" r="7" fill="#E8834A"/>
+
+  <!-- Sparkle -->
+  <path d="M195 108 L200 120 L212 122 L200 124 L195 136 L190 124 L178 122 L190 120 Z" fill="#FFD166"/>
+
+  <!-- Small dots -->
+  <circle cx="100" cy="185" r="4" fill="#7FD1B9"/>
+  <circle cx="205" cy="175" r="3" fill="#7FD1B9"/>
+
+  <!-- Wordmark -->
+  <text x="275" y="150" font-family="Poppins, Arial, sans-serif" font-size="56" font-weight="600" fill="#E8834A" letter-spacing="1">Minic</text>
+  <text x="277" y="185" font-family="Poppins, Arial, sans-serif" font-size="18" font-weight="400" fill="#8C6A5A" letter-spacing="2">CUTE MINIATURE TOYS</text>
+</svg>
