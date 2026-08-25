@@ -1,12 +1,15 @@
 package com.achiles.e_com.controller;
 
 import com.achiles.e_com.service.wishlist.WishlistService;
+import com.achiles.e_com.dto.product.ProductResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/api/wishlist")
+@RequestMapping("/api/v1/wishlist")
 @RequiredArgsConstructor
 public class WishlistController {
 
@@ -27,5 +30,10 @@ public class WishlistController {
     @GetMapping("/count")
     public ResponseEntity<Integer> getWishlistCount(@RequestParam Long userId) {
         return ResponseEntity.ok(wishlistService.getWishlistCount(userId));
+    }
+
+    @GetMapping("/items")
+    public ResponseEntity<List<ProductResponse>> getWishlistItems(@RequestParam Long userId) {
+        return ResponseEntity.ok(wishlistService.getWishlistItems(userId));
     }
 }

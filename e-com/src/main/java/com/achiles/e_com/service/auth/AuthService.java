@@ -1,6 +1,7 @@
 package com.achiles.e_com.service.auth;
 
 import com.achiles.e_com.dto.auth.*;
+import java.util.List;
 
 public interface AuthService {
 
@@ -14,4 +15,7 @@ public interface AuthService {
 
     // Customer & Seller - Google OAuth Auth
     AuthResponse loginWithGoogle(GoogleLoginRequest request);
+
+    // Admin - Get all users
+    List<UserResponse> getAllUsers();
 }

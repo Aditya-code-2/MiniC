@@ -9,6 +9,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -26,24 +28,26 @@ public class SecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http, com.achiles.e_com.repository.UserRepository userRepository) throws Exception {
+    public SecurityFilterChain securityFilterChain(HttpSecurity http, JwtAuthenticationFilter jwtAuthenticationFilter, com.achiles.e_com.repository.UserRepository userRepository, JwtUtil jwtUtil, OAuth2CodeService oauth2CodeService) throws Exception {
         http
             .cors(cors -> cors.configurationSource(corsConfigurationSource()))
             .csrf(csrf -> csrf.disable())
+            .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
                 .requestMatchers("/api/v1/auth/**", "/login/**", "/oauth2/**", "/api/v1/products/**", "/api/v1/categories/**").permitAll()
                 .anyRequest().authenticated()
             )
             .oauth2Login(oauth2 -> oauth2
-                .successHandler(oauthSuccessHandler(userRepository)) // Pass repository
-            );
+                .successHandler(oauthSuccessHandler(userRepository, jwtUtil, oauth2CodeService))
+            )
+            .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
     }
 
     // Custom OAuth Success Handler Bean
     @Bean
-    public AuthenticationSuccessHandler oauthSuccessHandler(com.achiles.e_com.repository.UserRepository userRepository) {
+    public AuthenticationSuccessHandler oauthSuccessHandler(com.achiles.e_com.repository.UserRepository userRepository, JwtUtil jwtUtil, OAuth2CodeService oauth2CodeService) {
         return (request, response, authentication) -> {
             OAuth2User oAuth2User = (OAuth2User) authentication.getPrincipal();
             String email = oAuth2User.getAttribute("email");
@@ -64,11 +68,14 @@ public class SecurityConfig {
                 return userRepository.save(newUser);
             });
 
-            // Redirect to React Frontend
-            String redirectUrl = "http://localhost:3001/oauth-success?email=" + email 
-                    + "&name=" + java.net.URLEncoder.encode(name, "UTF-8")
-                    + "&role=" + user.getRole().name()
-                    + "&userId=" + user.getId();
+            // Generate JWT Token
+            String token = jwtUtil.generateToken(user.getEmail(), user.getId(), user.getRole().name(), user.getFirstName() + " " + user.getLastName());
+            
+            // Generate one-time code
+            String code = oauth2CodeService.generateCode(token, user);
+
+            // Redirect to React Frontend with ONLY the single-use code
+            String redirectUrl = "http://localhost:3001/oauth-success?code=" + code;
             response.sendRedirect(redirectUrl);
         };
     }

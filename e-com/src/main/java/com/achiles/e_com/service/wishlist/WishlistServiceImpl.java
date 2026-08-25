@@ -12,7 +12,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.achiles.e_com.dto.product.ProductResponse;
 import java.util.Optional;
+import java.util.List;
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -40,8 +44,7 @@ public class WishlistServiceImpl implements WishlistService {
                     .wishlist(wishlist)
                     .product(product)
                     .build();
-            wishlist.getItems().add(newItem);
-            wishlistRepository.save(wishlist);
+            wishlistItemRepository.save(newItem);
         }
     }
 
@@ -69,5 +72,30 @@ public class WishlistServiceImpl implements WishlistService {
         return wishlistRepository.findByUserId(userId)
                 .map(wishlist -> wishlist.getItems().size())
                 .orElse(0);
+    }
+
+    @Override
+    public List<ProductResponse> getWishlistItems(Long userId) {
+        return wishlistRepository.findByUserId(userId)
+                .map(wishlist -> wishlist.getItems().stream()
+                        .map(item -> {
+                            Product p = item.getProduct();
+                            return ProductResponse.builder()
+                                    .id(p.getId())
+                                    .name(p.getName())
+                                    .slug(p.getSlug())
+                                    .description(p.getDescription())
+                                    .price(p.getPrice())
+                                    .stockQuantity(p.getStockQuantity())
+                                    .isActive(p.getIsActive())
+                                    .imageUrl(p.getImageUrl())
+                                    .categoryId(p.getCategory() != null ? p.getCategory().getId() : null)
+                                    .categoryName(p.getCategory() != null ? p.getCategory().getName() : null)
+                                    .createdAt(p.getCreatedAt())
+                                    .updatedAt(p.getUpdatedAt())
+                                    .build();
+                        })
+                        .collect(Collectors.toList()))
+                .orElse(Collections.emptyList());
     }
 }

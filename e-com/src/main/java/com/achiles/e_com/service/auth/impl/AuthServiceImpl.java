@@ -8,8 +8,11 @@ import com.achiles.e_com.repository.UserRepository;
 import com.achiles.e_com.service.auth.AuthService;
 import lombok.RequiredArgsConstructor;
 
+import com.achiles.e_com.config.JwtUtil;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import java.util.Optional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -17,6 +20,7 @@ public class AuthServiceImpl implements AuthService {
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final JwtUtil jwtUtil;
 
     @Value("${app.admin.email}")
     private String adminEmail;
@@ -56,8 +60,10 @@ public class AuthServiceImpl implements AuthService {
                 .build();
 
         User savedUser = userRepository.save(user);
+        String token = jwtUtil.generateToken(savedUser.getEmail(), savedUser.getId(), savedUser.getRole().name(), savedUser.getFirstName() + " " + savedUser.getLastName());
 
         return AuthResponse.builder()
+                .token(token)
                 .userId(savedUser.getId())
                 .name(savedUser.getFirstName() + " " + savedUser.getLastName())
                 .email(savedUser.getEmail())
@@ -73,7 +79,9 @@ public class AuthServiceImpl implements AuthService {
             if (!request.getPassword().equals(adminPassword)) {
                 throw new RuntimeException("Invalid Admin credentials!");
             }
+            String token = jwtUtil.generateToken(adminEmail, 0L, User.Role.ROLE_ADMIN.name(), "Admin");
             return AuthResponse.builder()
+                    .token(token)
                     .userId(0L) // Or fetch if exists in DB
                     .name("Admin")
                     .email(adminEmail)
@@ -93,7 +101,10 @@ public class AuthServiceImpl implements AuthService {
             throw new RuntimeException("This account uses OTP / OAuth login. Password login not permitted!");
         }
 
+        String token = jwtUtil.generateToken(user.getEmail(), user.getId(), user.getRole().name(), user.getFirstName() + " " + user.getLastName());
+
         return AuthResponse.builder()
+                .token(token)
                 .userId(user.getId())
                 .name(user.getFirstName() + " " + user.getLastName())
                 .email(user.getEmail())
@@ -132,7 +143,10 @@ public class AuthServiceImpl implements AuthService {
             user = userRepository.save(user);
         }
 
+        String token = jwtUtil.generateToken(user.getEmail(), user.getId(), user.getRole().name(), user.getFirstName() + " " + user.getLastName());
+
         return AuthResponse.builder()
+                .token(token)
                 .userId(user.getId())
                 .name(user.getFirstName() + " " + user.getLastName())
                 .email(user.getEmail())
@@ -185,12 +199,28 @@ public class AuthServiceImpl implements AuthService {
             user = userRepository.save(user);
         }
 
+        String token = jwtUtil.generateToken(user.getEmail(), user.getId(), user.getRole().name(), user.getFirstName() + " " + user.getLastName());
+
         return AuthResponse.builder()
+                .token(token)
                 .userId(user.getId())
                 .name(user.getFirstName() + " " + user.getLastName())
                 .email(user.getEmail())
                 .role(user.getRole().name())
                 .message("Google login successful!")
                 .build();
+    }
+
+    // Admin - Get all users
+    @Override
+    public List<UserResponse> getAllUsers() {
+        return userRepository.findAll().stream().map(user -> UserResponse.builder()
+                .id(user.getId())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .email(user.getEmail())
+                .role(user.getRole())
+                .profilePic(user.getProfilePic())
+                .build()).collect(Collectors.toList());
     }
 }
