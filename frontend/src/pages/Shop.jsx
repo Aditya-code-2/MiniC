@@ -11,6 +11,7 @@ const Shop = () => {
   const initialCategory = searchParams.get("category") || "all";
 
   const [products, setProducts] = useState([]);
+  const [isFallback, setIsFallback] = useState(false);
   const [loading, setLoading] = useState(true);
   const { user } = React.useContext(AuthContext);
   const { updateCartCount } = useCartWishlist();
@@ -19,15 +20,30 @@ const Shop = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
+      setIsFallback(false);
       try {
-        const [prodRes] = await Promise.all([
-          initialSearch 
-            ? API.get("/products/search", { params: { q: initialSearch } })
-            : initialCategory !== "all"
-              ? API.get(`/products/category/${initialCategory}`)
-              : API.get("/products")
-        ]);
-        setProducts(prodRes.data || []);
+        let result = [];
+        if (initialSearch) {
+          const res = await API.get("/products/search", { params: { q: initialSearch } });
+          result = res.data || [];
+          
+          if (result.length === 0) {
+            const fallbackRes = await API.get("/products/search", { params: { q: "doll" } });
+            result = fallbackRes.data || [];
+            if (result.length === 0) {
+              const allRes = await API.get("/products");
+              result = allRes.data || [];
+            }
+            setIsFallback(true);
+          }
+        } else if (initialCategory !== "all") {
+          const res = await API.get(`/products/category/${initialCategory}`);
+          result = res.data || [];
+        } else {
+          const res = await API.get("/products");
+          result = res.data || [];
+        }
+        setProducts(result);
       } catch (err) {
         console.error("Error fetching shop data:", err);
       } finally {
@@ -56,9 +72,15 @@ const Shop = () => {
   return (
     <div className="bg-[#FFFDF9] min-h-screen p-4 sm:p-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-2xl sm:text-4xl font-black text-gray-900 mb-6">
+        <h1 className="text-2xl sm:text-4xl font-black text-gray-900 mb-2">
           {initialSearch ? `Search Results for "${initialSearch}"` : "Shop All Miniatures"}
         </h1>
+        {isFallback && (
+          <div className="mb-6 p-4 bg-amber-50 border border-amber-200 rounded-2xl text-amber-800 text-sm font-semibold flex items-center gap-2">
+            <span>💡</span>
+            <span>No exact matches found for "{initialSearch}". Showing popular Dolls & Playsets instead!</span>
+          </div>
+        )}
 
         {loading ? (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
