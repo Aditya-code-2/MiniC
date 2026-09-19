@@ -32,6 +32,9 @@ public class SecurityConfig {
     @Value("${GOOGLE_CLIENT_SECRET:google-client-secret-placeholder}")
     private String googleClientSecret;
 
+    @Value("${FRONTEND_URL:http://localhost:3000}")
+    private String frontendUrl;
+
     // PasswordEncoder Bean
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -109,7 +112,11 @@ public class SecurityConfig {
             String code = oauth2CodeService.generateCode(token, user);
 
             // Redirect to React Frontend
-            String redirectUrl = "http://localhost:3001/oauth-success?code=" + code;
+            String baseFrontend = (frontendUrl != null && !frontendUrl.isBlank()) ? frontendUrl.trim() : "http://localhost:3000";
+            if (baseFrontend.endsWith("/")) {
+                baseFrontend = baseFrontend.substring(0, baseFrontend.length() - 1);
+            }
+            String redirectUrl = baseFrontend + "/oauth-success?code=" + code;
             response.sendRedirect(redirectUrl);
         };
     }
