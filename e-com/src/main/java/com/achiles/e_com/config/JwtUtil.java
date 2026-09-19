@@ -15,9 +15,8 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
     
-    // In production, this should be a secure random key stored in application.properties
     private final Key SECRET_KEY = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-    private final long JWT_EXPIRATION_MS = 86400000; // 1 Day
+    private final long JWT_EXPIRATION_MS = 86400000;
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -25,7 +24,6 @@ public class JwtUtil {
 
     public Long extractUserId(String token) {
         Claims claims = extractAllClaims(token);
-        // sometimes Long is stored as Integer in claims
         Number userId = claims.get("userId", Number.class);
         return userId != null ? userId.longValue() : null;
     }
