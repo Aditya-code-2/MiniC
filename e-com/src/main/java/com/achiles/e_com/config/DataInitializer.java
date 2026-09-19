@@ -38,7 +38,7 @@ public class DataInitializer implements CommandLineRunner {
                     .firstName("Super")
                     .lastName("Admin")
                     .email(adminEmail)
-                    .password(passwordEncoder.encode(adminPassword)) // Password hash ho kar DB me jayega
+                    .password(passwordEncoder.encode(adminPassword)) // Password hashed before saving
                     .role(User.Role.ROLE_ADMIN)
                     .build();
 

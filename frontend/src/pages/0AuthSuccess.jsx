@@ -35,7 +35,7 @@ const OAuthSuccess = () => {
   return (
     <div className="min-h-screen bg-rose-50 flex flex-col items-center justify-center font-bold text-rose-500">
       <div className="animate-spin text-4xl mb-3">🧸</div>
-      <p>Google se login ho raha hai, kripya intezar karein...</p>
+      <p>Signing in with Google, please wait...</p>
     </div>
   );
 };
