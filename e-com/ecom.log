@@ -361,3 +361,8 @@ Caused by: java.net.ConnectException: Connection refused: getsockopt
 2026-09-19T21:27:00.995+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/categories
 2026-09-19T21:27:01.009+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/products
 2026-09-19T21:27:01.015+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/products
+2026-09-19T23:18:16.460+05:30  INFO 16648 --- [e-com] [SpringApplicationShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-09-19T23:18:16.650+05:30  INFO 16648 --- [e-com] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-09-19T23:18:16.679+05:30  INFO 16648 --- [e-com] [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-09-19T23:18:16.691+05:30  INFO 16648 --- [e-com] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-09-19T23:18:16.719+05:30  INFO 16648 --- [e-com] [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
