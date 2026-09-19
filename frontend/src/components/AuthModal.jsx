@@ -20,9 +20,8 @@ const AuthModal = ({ isOpen, onClose, onSuccess, defaultRole = "user" }) => {
   if (!isOpen) return null;
 
   const handleGoogleLogin = () => {
-    const backendHost = process.env.REACT_APP_API_BASE_URL 
-      ? process.env.REACT_APP_API_BASE_URL.replace('/api/v1', '') 
-      : 'https://minic.onrender.com';
+    const rawUrl = process.env.REACT_APP_API_BASE_URL || 'https://minic.onrender.com/api/v1';
+    const backendHost = rawUrl.split('/api')[0];
     window.location.href = `${backendHost}/oauth2/authorization/google?role=${role}`;
   };
 
