@@ -1,6 +1,10 @@
 import axios from 'axios';
 
-const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'https://minic.onrender.com/api/v1';
+const isLocalhost = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
+const API_BASE_URL = isLocalhost 
+  ? (process.env.REACT_APP_API_BASE_URL || 'http://localhost:8086/api/v1')
+  : 'https://minic.onrender.com/api/v1';
 
 const API = axios.create({
   baseURL: API_BASE_URL,
