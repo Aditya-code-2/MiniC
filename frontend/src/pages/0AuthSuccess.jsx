@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
+import API from "../api";
 
 const OAuthSuccess = () => {
   const [searchParams] = useSearchParams();
@@ -10,13 +11,9 @@ const OAuthSuccess = () => {
 
     if (code) {
       // Exchange code for token
-      fetch(`http://localhost:8086/api/v1/auth/exchange-code?code=${code}`)
+      API.get(`/auth/exchange-code?code=${code}`)
         .then(res => {
-          if (!res.ok) throw new Error("Invalid code");
-          return res.json();
-        })
-        .then(data => {
-          const { token, userId, role, name, email } = data;
+          const { token, userId, role, name, email } = res.data;
           
           const user = { email, name, role, userId };
           localStorage.setItem("user", JSON.stringify(user));

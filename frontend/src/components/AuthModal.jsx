@@ -20,8 +20,10 @@ const AuthModal = ({ isOpen, onClose, onSuccess, defaultRole = "user" }) => {
   if (!isOpen) return null;
 
   const handleGoogleLogin = () => {
-    // Redirect to Spring Security default OAuth2 login route
-    window.location.href = `http://localhost:8086/oauth2/authorization/google?role=${role}`;
+    const backendHost = process.env.REACT_APP_API_BASE_URL 
+      ? process.env.REACT_APP_API_BASE_URL.replace('/api/v1', '') 
+      : 'https://minic.onrender.com';
+    window.location.href = `${backendHost}/oauth2/authorization/google?role=${role}`;
   };
 
   // 2. Handle Send Magic Link / OTP to Email
