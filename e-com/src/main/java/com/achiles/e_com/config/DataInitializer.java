@@ -24,10 +24,10 @@ public class DataInitializer implements CommandLineRunner {
     private final ProductRepository productRepository;
     private final PasswordEncoder passwordEncoder;
 
-    @Value("${app.admin.email}")
+    @Value("${app.admin.email:adityakumar909763@gmail.com}")
     private String adminEmail;
 
-    @Value("${app.admin.password}")
+    @Value("${app.admin.password:Admin@123SecurePass}")
     private String adminPassword;
 
     @Override
