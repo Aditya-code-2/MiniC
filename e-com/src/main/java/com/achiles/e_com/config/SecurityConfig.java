@@ -2,11 +2,16 @@ package com.achiles.e_com.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.security.oauth2.client.registration.ClientRegistration;
+import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
+import org.springframework.security.oauth2.client.registration.InMemoryClientRegistrationRepository;
+import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
@@ -21,10 +26,38 @@ import java.util.List;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    // 1. Missing PasswordEncoder Bean (Fixes DataInitializer error)
+    @Value("${GOOGLE_CLIENT_ID:google-client-id-placeholder}")
+    private String googleClientId;
+
+    @Value("${GOOGLE_CLIENT_SECRET:google-client-secret-placeholder}")
+    private String googleClientSecret;
+
+    // PasswordEncoder Bean
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
+    }
+
+    // Explicit ClientRegistrationRepository bean
+    @Bean
+    public ClientRegistrationRepository clientRegistrationRepository() {
+        String clientId = (googleClientId != null && !googleClientId.isBlank()) ? googleClientId : "google-client-id-placeholder";
+        String clientSecret = (googleClientSecret != null && !googleClientSecret.isBlank()) ? googleClientSecret : "google-client-secret-placeholder";
+
+        ClientRegistration googleRegistration = ClientRegistration.withRegistrationId("google")
+                .clientId(clientId)
+                .clientSecret(clientSecret)
+                .authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
+                .redirectUri("{baseUrl}/login/oauth2/code/{registrationId}")
+                .scope("profile", "email")
+                .authorizationUri("https://accounts.google.com/o/oauth2/v2/auth")
+                .tokenUri("https://www.googleapis.com/oauth2/v4/token")
+                .userInfoUri("https://www.googleapis.com/oauth2/v3/userinfo")
+                .userNameAttributeName("sub")
+                .clientName("Google")
+                .build();
+
+        return new InMemoryClientRegistrationRepository(googleRegistration);
     }
 
     @Bean
@@ -34,10 +67,11 @@ public class SecurityConfig {
             .csrf(csrf -> csrf.disable())
             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/api/v1/auth/**", "/login/**", "/oauth2/**", "/api/v1/products/**", "/api/v1/categories/**").permitAll()
+                .requestMatchers("/api/v1/auth/**", "/login/**", "/oauth2/**", "/api/v1/products/**", "/api/v1/categories/**", "/h2-console/**").permitAll()
                 .anyRequest().authenticated()
             )
             .oauth2Login(oauth2 -> oauth2
+                .clientRegistrationRepository(clientRegistrationRepository())
                 .successHandler(oauthSuccessHandler(userRepository, jwtUtil, oauth2CodeService))
             )
             .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
@@ -74,7 +108,7 @@ public class SecurityConfig {
             // Generate one-time code
             String code = oauth2CodeService.generateCode(token, user);
 
-            // Redirect to React Frontend with ONLY the single-use code
+            // Redirect to React Frontend
             String redirectUrl = "http://localhost:3001/oauth-success?code=" + code;
             response.sendRedirect(redirectUrl);
         };
@@ -83,7 +117,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(List.of("http://localhost:3000", "http://localhost:3001"));
+        config.setAllowedOriginPatterns(List.of("*"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);
