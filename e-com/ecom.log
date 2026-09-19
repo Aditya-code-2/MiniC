@@ -128,3 +128,236 @@ Caused by: java.net.ConnectException: Connection refused: getsockopt
 	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:53) ~[mysql-connector-j-9.7.0.jar:9.7.0]
 	... 38 common frames omitted
 
+2026-09-19T21:24:57.764+05:30  INFO 15168 --- [e-com] [main] com.achiles.e_com.EComApplication        : Starting EComApplication using Java 17.0.16 with PID 15168 (C:\Users\Lenovo\Downloads\e-com\e-com\target\classes started by Lenovo in C:\Users\Lenovo\Downloads\e-com\e-com)
+2026-09-19T21:24:57.768+05:30  INFO 15168 --- [e-com] [main] com.achiles.e_com.EComApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-09-19T21:24:58.530+05:30  INFO 15168 --- [e-com] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-19T21:24:58.662+05:30  INFO 15168 --- [e-com] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 117 ms. Found 15 JPA repository interfaces.
+2026-09-19T21:24:59.180+05:30  INFO 15168 --- [e-com] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8086 (http)
+2026-09-19T21:24:59.196+05:30  INFO 15168 --- [e-com] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-19T21:24:59.200+05:30  INFO 15168 --- [e-com] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-09-19T21:24:59.256+05:30  INFO 15168 --- [e-com] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1440 ms
+2026-09-19T21:24:59.506+05:30  INFO 15168 --- [e-com] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-19T21:25:00.624+05:30  WARN 15168 --- [e-com] [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/hibernate/autoconfigure/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/flyway/autoconfigure/FlywayAutoConfiguration$FlywayConfiguration.class]: Unable to obtain connection from database: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SQL State  : 08S01
+Error Code : 0
+Message    : Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+
+2026-09-19T21:25:00.630+05:30  INFO 15168 --- [e-com] [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2026-09-19T21:25:00.648+05:30  INFO 15168 --- [e-com] [main] .s.b.a.l.ConditionEvaluationReportLogger : 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-09-19T21:25:00.660+05:30 ERROR 15168 --- [e-com] [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'entityManagerFactory' defined in class path resource [org/springframework/boot/hibernate/autoconfigure/HibernateJpaConfiguration.class]: Failed to initialize dependency 'flywayInitializer' of LoadTimeWeaverAware bean 'entityManagerFactory': Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/flyway/autoconfigure/FlywayAutoConfiguration$FlywayConfiguration.class]: Unable to obtain connection from database: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SQL State  : 08S01
+Error Code : 0
+Message    : Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:322) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:201) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:977) ~[spring-context-7.0.8.jar:7.0.8]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:621) ~[spring-context-7.0.8.jar:7.0.8]
+	at org.springframework.boot.web.server.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:143) ~[spring-boot-web-server-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:756) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:445) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:321) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1365) ~[spring-boot-4.1.0.jar:4.1.0]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1354) ~[spring-boot-4.1.0.jar:4.1.0]
+	at com.achiles.e_com.EComApplication.main(EComApplication.java:32) ~[classes/:na]
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'flywayInitializer' defined in class path resource [org/springframework/boot/flyway/autoconfigure/FlywayAutoConfiguration$FlywayConfiguration.class]: Unable to obtain connection from database: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SQL State  : 08S01
+Error Code : 0
+Message    : Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1815) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:603) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:525) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:333) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:371) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:331) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:196) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:309) ~[spring-beans-7.0.8.jar:7.0.8]
+	... 10 common frames omitted
+Caused by: org.flywaydb.core.internal.exception.sqlExceptions.FlywaySqlUnableToConnectToDbException: Unable to obtain connection from database: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+SQL State  : 08S01
+Error Code : 0
+Message    : Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+
+	at org.flywaydb.core.internal.jdbc.JdbcUtils.openConnection(JdbcUtils.java:78) ~[flyway-core-12.4.0.jar:na]
+	at org.flywaydb.core.internal.jdbc.JdbcConnectionFactory.<init>(JdbcConnectionFactory.java:76) ~[flyway-core-12.4.0.jar:na]
+	at org.flywaydb.core.FlywayExecutor.init(FlywayExecutor.java:275) ~[flyway-core-12.4.0.jar:na]
+	at org.flywaydb.core.FlywayExecutor.execute(FlywayExecutor.java:120) ~[flyway-core-12.4.0.jar:na]
+	at org.flywaydb.core.Flyway.migrate(Flyway.java:181) ~[flyway-core-12.4.0.jar:na]
+	at org.springframework.boot.flyway.autoconfigure.FlywayMigrationInitializer.afterPropertiesSet(FlywayMigrationInitializer.java:67) ~[spring-boot-flyway-4.1.0.jar:4.1.0]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1862) ~[spring-beans-7.0.8.jar:7.0.8]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1811) ~[spring-beans-7.0.8.jar:7.0.8]
+	... 17 common frames omitted
+Caused by: com.mysql.cj.jdbc.exceptions.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at com.mysql.cj.jdbc.exceptions.SQLError.createCommunicationsException(SQLError.java:165) ~[mysql-connector-j-9.7.0.jar:9.7.0]
+	at com.mysql.cj.jdbc.exceptions.SQLExceptionsMapping.translateException(SQLExceptionsMapping.java:55) ~[mysql-connector-j-9.7.0.jar:9.7.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:840) ~[mysql-connector-j-9.7.0.jar:9.7.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:416) ~[mysql-connector-j-9.7.0.jar:9.7.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:237) ~[mysql-connector-j-9.7.0.jar:9.7.0]
+	at com.mysql.cj.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:180) ~[mysql-connector-j-9.7.0.jar:9.7.0]
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:144) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:373) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:210) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:488) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:576) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:97) ~[HikariCP-7.0.2.jar:na]
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111) ~[HikariCP-7.0.2.jar:na]
+	at org.flywaydb.core.internal.jdbc.JdbcUtils.openConnection(JdbcUtils.java:73) ~[flyway-core-12.4.0.jar:na]
+	... 24 common frames omitted
+Caused by: com.mysql.cj.exceptions.CJCommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:500) ~[na:na]
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:481) ~[na:na]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:52) ~[mysql-connector-j-9.7.0.jar:9.7.0]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:95) ~[mysql-connector-j-9.7.0.jar:9.7.0]
+	at com.mysql.cj.exceptions.ExceptionFactory.createException(ExceptionFactory.java:140) ~[mysql-connector-j-9.7.0.jar:9.7.0]
+	at com.mysql.cj.exceptions.ExceptionFactory.createCommunicationsException(ExceptionFactory.java:156) ~[mysql-connector-j-9.7.0.jar:9.7.0]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:79) ~[mysql-connector-j-9.7.0.jar:9.7.0]
+	at com.mysql.cj.NativeSession.connect(NativeSession.java:142) ~[mysql-connector-j-9.7.0.jar:9.7.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.connectOneTryOnly(ConnectionImpl.java:964) ~[mysql-connector-j-9.7.0.jar:9.7.0]
+	at com.mysql.cj.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:828) ~[mysql-connector-j-9.7.0.jar:9.7.0]
+	... 35 common frames omitted
+Caused by: java.net.ConnectException: Connection refused: getsockopt
+	at java.base/sun.nio.ch.Net.pollConnect(Native Method) ~[na:na]
+	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:672) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.timedFinishConnect(NioSocketImpl.java:547) ~[na:na]
+	at java.base/sun.nio.ch.NioSocketImpl.connect(NioSocketImpl.java:602) ~[na:na]
+	at java.base/java.net.SocksSocketImpl.connect(SocksSocketImpl.java:327) ~[na:na]
+	at java.base/java.net.Socket.connect(Socket.java:633) ~[na:na]
+	at com.mysql.cj.protocol.StandardSocketFactory.connect(StandardSocketFactory.java:144) ~[mysql-connector-j-9.7.0.jar:9.7.0]
+	at com.mysql.cj.protocol.a.NativeSocketConnection.connect(NativeSocketConnection.java:53) ~[mysql-connector-j-9.7.0.jar:9.7.0]
+	... 38 common frames omitted
+
+2026-09-19T21:26:21.113+05:30  INFO 16648 --- [e-com] [main] com.achiles.e_com.EComApplication        : Starting EComApplication using Java 17.0.16 with PID 16648 (C:\Users\Lenovo\Downloads\e-com\e-com\target\classes started by Lenovo in C:\Users\Lenovo\Downloads\e-com\e-com)
+2026-09-19T21:26:21.113+05:30  INFO 16648 --- [e-com] [main] com.achiles.e_com.EComApplication        : No active profile set, falling back to 1 default profile: "default"
+2026-09-19T21:26:21.784+05:30  INFO 16648 --- [e-com] [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-09-19T21:26:21.892+05:30  INFO 16648 --- [e-com] [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 100 ms. Found 15 JPA repository interfaces.
+2026-09-19T21:26:22.432+05:30  INFO 16648 --- [e-com] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 8086 (http)
+2026-09-19T21:26:22.448+05:30  INFO 16648 --- [e-com] [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-09-19T21:26:22.448+05:30  INFO 16648 --- [e-com] [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.22]
+2026-09-19T21:26:22.534+05:30  INFO 16648 --- [e-com] [main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1376 ms
+2026-09-19T21:26:22.790+05:30  INFO 16648 --- [e-com] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-09-19T21:26:22.962+05:30  INFO 16648 --- [e-com] [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@7aae1170
+2026-09-19T21:26:22.962+05:30  INFO 16648 --- [e-com] [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-09-19T21:26:22.970+05:30  INFO 16648 --- [e-com] [main] org.flywaydb.core.FlywayExecutor         : Database: jdbc:mysql://localhost:3306/ecom?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC (MySQL 5.5)
+2026-09-19T21:26:23.163+05:30  INFO 16648 --- [e-com] [main] o.f.core.internal.command.DbValidate     : Successfully validated 8 migrations (execution time 00:00.043s)
+2026-09-19T21:26:23.174+05:30  INFO 16648 --- [e-com] [main] o.f.core.internal.command.DbMigrate      : Current version of schema `ecom`: 8
+2026-09-19T21:26:23.181+05:30  INFO 16648 --- [e-com] [main] o.f.core.internal.command.DbMigrate      : Schema `ecom` is up to date. No migration necessary.
+2026-09-19T21:26:23.283+05:30  INFO 16648 --- [e-com] [main] org.hibernate.orm.jpa                    : HHH008540: Processing PersistenceUnitInfo [name: default]
+2026-09-19T21:26:23.347+05:30  INFO 16648 --- [e-com] [main] org.hibernate.orm.core                   : HHH000001: Hibernate ORM core version 7.4.1.Final
+2026-09-19T21:26:23.788+05:30  INFO 16648 --- [e-com] [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-09-19T21:26:23.866+05:30  WARN 16648 --- [e-com] [main] org.hibernate.orm.core                   : HHH000511: The 5.5.5 version for [org.hibernate.dialect.MySQLDialect] is no longer supported, hence certain features may not work properly.The minimum supported version is 8.0.0. Check the community dialects project for available legacy versions.
+2026-09-19T21:26:23.887+05:30  INFO 16648 --- [e-com] [main] org.hibernate.orm.connections.pooling    : HHH10001005: Database info:
+	Database JDBC URL [jdbc:mysql://localhost:3306/ecom?createDatabaseIfNotExist=true&useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC]
+	Database driver: MySQL Connector/J
+	Database dialect: MySQLDialect
+	Database version: 5.5.5
+	Default catalog/schema: ecom/undefined
+	Autocommit mode: undefined/unknown
+	Isolation level: REPEATABLE_READ [default REPEATABLE_READ]
+	JDBC fetch size: none
+	Pool: DataSourceConnectionProvider
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2026-09-19T21:26:25.036+05:30  INFO 16648 --- [e-com] [main] org.hibernate.orm.core                   : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-09-19T21:26:25.036+05:30  INFO 16648 --- [e-com] [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-09-19T21:26:25.108+05:30  INFO 16648 --- [e-com] [main] o.s.d.j.r.query.QueryEnhancerFactories   : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-09-19T21:26:26.043+05:30  WARN 16648 --- [e-com] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-09-19T21:26:26.093+05:30 DEBUG 16648 --- [e-com] [main] swordEncoderAuthenticationManagerBuilder : No authenticationProviders and no parentAuthenticationManager defined. Returning null.
+2026-09-19T21:26:26.270+05:30 DEBUG 16648 --- [e-com] [main] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with filters: DisableEncodeUrlFilter, WebAsyncManagerIntegrationFilter, SecurityContextHolderFilter, HeaderWriterFilter, CorsFilter, LogoutFilter, OAuth2AuthorizationRequestRedirectFilter, OAuth2LoginAuthenticationFilter, JwtAuthenticationFilter, DefaultResourcesFilter, DefaultLoginPageGeneratingFilter, DefaultLogoutPageGeneratingFilter, RequestCacheAwareFilter, SecurityContextHolderAwareRequestFilter, AnonymousAuthenticationFilter, SessionManagementFilter, ExceptionTranslationFilter, AuthorizationFilter
+2026-09-19T21:26:26.583+05:30  INFO 16648 --- [e-com] [main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 8086 (http) with context path '/'
+2026-09-19T21:26:26.591+05:30  INFO 16648 --- [e-com] [main] com.achiles.e_com.EComApplication        : Started EComApplication in 5.94 seconds (process running for 6.494)
+2026-09-19T21:26:34.590+05:30  INFO 16648 --- [e-com] [http-nio-8086-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-09-19T21:26:34.602+05:30  INFO 16648 --- [e-com] [http-nio-8086-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-09-19T21:26:34.602+05:30  INFO 16648 --- [e-com] [http-nio-8086-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2026-09-19T21:26:34.652+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /oauth2/authorization/google?role=user
+2026-09-19T21:26:35.097+05:30  WARN 16648 --- [e-com] [http-nio-8086-exec-2] o.a.c.util.SessionIdGeneratorBase        : Creation of SecureRandom instance for session ID generation using [SHA1PRNG] took [378] milliseconds.
+2026-09-19T21:26:35.097+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-2] o.s.s.web.DefaultRedirectStrategy        : Redirecting to https://accounts.google.com/o/oauth2/v2/auth?response_type=code&client_id=505869046781-r5hn1960bhi87742mntldrf67ih0va4o.apps.googleusercontent.com&scope=profile%20email&state=yW0HiwepNf0NRw77Y6UhljCLBtddWzzKFxc-sethmzg%3D&redirect_uri=http://localhost:8086/login/oauth2/code/google&code_challenge=HvwpqFSFHx8iYrCrDqOEF72GX-ZyWKu8j1gdSOjR9oc&code_challenge_method=S256
+2026-09-19T21:26:43.205+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /login/oauth2/code/google?state=yW0HiwepNf0NRw77Y6UhljCLBtddWzzKFxc-sethmzg%3D&iss=https%3A%2F%2Faccounts.google.com&code=4%2F0ATsMZqAGY6SesWE8lvRqCVe-xZ7Fauy6BoWRUyrjzlcWRc6jneVIL_tpf6TbzyEDrfXCBw&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+openid+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile&authuser=0&prompt=none
+2026-09-19T21:26:44.423+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-5] .s.ChangeSessionIdAuthenticationStrategy : Changed session id from FF2BC8C42738BB536D31A5B732403879
+2026-09-19T21:26:44.425+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-5] .s.o.c.w.OAuth2LoginAuthenticationFilter : Set SecurityContextHolder to OAuth2AuthenticationToken [Principal=Name: [105981805956784441908], Granted Authorities: [[OAUTH2_USER, SCOPE_https://www.googleapis.com/auth/userinfo.email, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_openid]], User Attributes: [{sub=105981805956784441908, name=Aditya Kumar, given_name=Aditya, family_name=Kumar, picture=https://lh3.googleusercontent.com/a/ACg8ocLc9WoWd-sIVyGnxolf5M--PAPJy9F9tSczQ9rlFrr0sH8vRymY7w=s96-c, email=adityakumar.net4566@gmail.com, email_verified=true}], Credentials=[PROTECTED], Authenticated=true, Details=WebAuthenticationDetails [RemoteIpAddress=127.0.0.1, SessionId=FF2BC8C42738BB536D31A5B732403879], Granted Authorities=[SCOPE_openid, SCOPE_https://www.googleapis.com/auth/userinfo.profile, SCOPE_https://www.googleapis.com/auth/userinfo.email, OAUTH2_USER, FactorGrantedAuthority [authority=FACTOR_AUTHORIZATION_CODE, issuedAt=2026-09-19T15:56:44.414731400Z]]]
+2026-09-19T21:26:44.857+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/auth/exchange-code?code=e69e8e90-7457-4757-95f9-621528098134
+2026-09-19T21:26:44.928+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-3] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-09-19T21:26:44.965+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/auth/exchange-code?code=e69e8e90-7457-4757-95f9-621528098134
+2026-09-19T21:26:45.149+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/auth/exchange-code?code=e69e8e90-7457-4757-95f9-621528098134
+2026-09-19T21:26:45.152+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-4] o.s.s.w.a.AnonymousAuthenticationFilter  : Set SecurityContextHolder to anonymous SecurityContext
+2026-09-19T21:26:45.152+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/auth/exchange-code?code=e69e8e90-7457-4757-95f9-621528098134
+2026-09-19T21:26:45.286+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/categories
+2026-09-19T21:26:45.287+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-6] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/products
+2026-09-19T21:26:45.289+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/products
+2026-09-19T21:26:45.295+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-9] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/cart/user/2
+2026-09-19T21:26:45.297+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/categories
+2026-09-19T21:26:45.297+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-10] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/wishlist/count?userId=2
+2026-09-19T21:26:45.301+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/categories
+2026-09-19T21:26:45.301+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/wishlist/items?userId=2
+2026-09-19T21:26:45.301+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-3] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/products
+2026-09-19T21:26:45.329+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/wishlist/count?userId=2
+2026-09-19T21:26:45.329+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-1] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/cart/user/2
+2026-09-19T21:26:45.344+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/wishlist/items?userId=2
+2026-09-19T21:26:45.378+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-4] .s.ChangeSessionIdAuthenticationStrategy : Changed session id from 5F3FB086BCF63DABAAC971817F94AF91
+2026-09-19T21:26:45.378+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/categories
+2026-09-19T21:26:45.378+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-3] .s.ChangeSessionIdAuthenticationStrategy : Changed session id from CFAB2C8C5DC2B30C933834C5FDEB0DFA
+2026-09-19T21:26:45.382+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-1] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/cart/user/2
+2026-09-19T21:26:45.382+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/wishlist/count?userId=2
+2026-09-19T21:26:45.382+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-3] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/products
+2026-09-19T21:26:45.382+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/wishlist/items?userId=2
+2026-09-19T21:26:45.410+05:30  WARN 16648 --- [e-com] [http-nio-8086-exec-6] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 1146, SQLState: 42S02
+2026-09-19T21:26:45.410+05:30  WARN 16648 --- [e-com] [http-nio-8086-exec-4] org.hibernate.orm.jdbc.error             : HHH000247: ErrorCode: 1146, SQLState: 42S02
+2026-09-19T21:26:45.415+05:30  WARN 16648 --- [e-com] [http-nio-8086-exec-4] org.hibernate.orm.jdbc.error             : Table 'ecom.wishlists' doesn't exist
+2026-09-19T21:26:45.415+05:30  WARN 16648 --- [e-com] [http-nio-8086-exec-6] org.hibernate.orm.jdbc.error             : Table 'ecom.wishlists' doesn't exist
+2026-09-19T21:26:45.505+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-8] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/categories
+2026-09-19T21:26:45.524+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-8] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/categories
+2026-09-19T21:26:45.574+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-7] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/products
+2026-09-19T21:26:45.588+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-7] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/products
+2026-09-19T21:26:49.772+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/products
+2026-09-19T21:26:49.782+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/products
+2026-09-19T21:26:49.873+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/products
+2026-09-19T21:26:49.900+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/products
+2026-09-19T21:26:54.418+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-4] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/products
+2026-09-19T21:26:54.418+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/products
+2026-09-19T21:26:54.425+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-6] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/products
+2026-09-19T21:26:54.455+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-6] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/products
+2026-09-19T21:26:54.530+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-5] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/products
+2026-09-19T21:26:54.546+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-5] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/products
+2026-09-19T21:27:00.908+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-1] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/categories
+2026-09-19T21:27:00.908+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-8] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/categories
+2026-09-19T21:27:00.908+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-3] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/products
+2026-09-19T21:27:00.908+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-7] o.s.security.web.FilterChainProxy        : Securing OPTIONS /api/v1/products
+2026-09-19T21:27:00.914+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-10] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/products
+2026-09-19T21:27:00.914+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-9] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/categories
+2026-09-19T21:27:00.940+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-9] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/categories
+2026-09-19T21:27:00.940+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-10] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/products
+2026-09-19T21:27:00.971+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-4] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/categories
+2026-09-19T21:27:00.995+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-4] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/categories
+2026-09-19T21:27:01.009+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Securing GET /api/v1/products
+2026-09-19T21:27:01.015+05:30 DEBUG 16648 --- [e-com] [http-nio-8086-exec-2] o.s.security.web.FilterChainProxy        : Secured GET /api/v1/products
