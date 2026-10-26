@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import API, { loginWithPassword } from "../api";
+import API, { loginWithPassword, getBackendHost } from "../api";
 
 const AuthModal = ({ isOpen, onClose, onSuccess, defaultRole = "user" }) => {
   const [role, setRole] = useState(defaultRole); // 'user', 'seller', or 'admin'
@@ -20,10 +20,7 @@ const AuthModal = ({ isOpen, onClose, onSuccess, defaultRole = "user" }) => {
   if (!isOpen) return null;
 
   const handleGoogleLogin = () => {
-    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    const backendHost = isLocalhost 
-      ? (process.env.REACT_APP_API_BASE_URL ? process.env.REACT_APP_API_BASE_URL.split('/api')[0] : 'http://localhost:8086')
-      : 'https://minic.onrender.com';
+    const backendHost = getBackendHost();
     window.location.href = `${backendHost}/oauth2/authorization/google?role=${role}`;
   };
 

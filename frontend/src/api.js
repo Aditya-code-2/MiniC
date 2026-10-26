@@ -1,13 +1,36 @@
 import axios from 'axios';
+import { Capacitor } from '@capacitor/core';
 
-const isLocalhost = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+export const getApiBaseUrl = () => {
+  if (typeof window !== 'undefined' && localStorage.getItem('API_BASE_URL')) {
+    return localStorage.getItem('API_BASE_URL');
+  }
 
-const API_BASE_URL = isLocalhost 
-  ? (process.env.REACT_APP_API_BASE_URL || 'http://localhost:8086/api/v1')
-  : 'https://minic.onrender.com/api/v1';
+  const isNative = typeof Capacitor !== 'undefined' && Capacitor.isNativePlatform();
+  const envUrl = process.env.REACT_APP_API_BASE_URL;
+
+  if (isNative) {
+    if (envUrl) {
+      return envUrl;
+    }
+    // Default native fallback: deployed live backend or host emulator
+    return 'https://minic.onrender.com/api/v1';
+  }
+
+  const isLocalhost = typeof window !== 'undefined' && (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1');
+
+  return isLocalhost 
+    ? (envUrl || 'http://localhost:8086/api/v1')
+    : (envUrl || 'https://minic.onrender.com/api/v1');
+};
+
+export const getBackendHost = () => {
+  const apiUrl = getApiBaseUrl();
+  return apiUrl.split('/api')[0];
+};
 
 const API = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: getApiBaseUrl(),
   withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
