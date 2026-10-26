@@ -9,13 +9,31 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (token) {
       const storedUser = localStorage.getItem("user");
-      if (storedUser) setUser(JSON.parse(storedUser));
+      if (storedUser) {
+        try {
+          const parsed = JSON.parse(storedUser);
+          // If previous session had Google ID or missing data, clear it
+          if (parsed.googleId) {
+            logout();
+            return;
+          }
+          setUser(parsed);
+        } catch (e) {
+          logout();
+        }
+      }
     }
   }, [token]);
 
   const login = (userData, authToken) => {
     localStorage.setItem("token", authToken);
     localStorage.setItem("user", JSON.stringify(userData));
+    if (userData.userId || userData.id) {
+      localStorage.setItem("userId", userData.userId || userData.id);
+    }
+    if (userData.role) {
+      localStorage.setItem("userRole", userData.role);
+    }
     setToken(authToken);
     setUser(userData);
   };
@@ -23,6 +41,8 @@ export const AuthProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
+    localStorage.removeItem("userId");
+    localStorage.removeItem("userRole");
     setToken(null);
     setUser(null);
   };

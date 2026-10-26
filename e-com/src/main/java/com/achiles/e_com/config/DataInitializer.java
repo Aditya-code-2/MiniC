@@ -23,6 +23,7 @@ public class DataInitializer implements CommandLineRunner {
     private final CategoryRepository categoryRepository;
     private final ProductRepository productRepository;
     private final PasswordEncoder passwordEncoder;
+    private final com.achiles.e_com.service.auth.AuthService authService;
 
     @Value("${app.admin.email:adityakumar909763@gmail.com}")
     private String adminEmail;
@@ -32,6 +33,13 @@ public class DataInitializer implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        // Automatically delete any previous customer/test/oauth login data
+        try {
+            authService.clearPreviousUserData();
+        } catch (Exception e) {
+            System.err.println("Note: Clear previous users failed: " + e.getMessage());
+        }
+
         User admin = null;
         if (userRepository.findByEmail(adminEmail).isEmpty()) {
             admin = User.builder()

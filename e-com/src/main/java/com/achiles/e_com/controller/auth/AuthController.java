@@ -58,4 +58,12 @@ public class AuthController {
     public ResponseEntity<List<UserResponse>> getAllUsers() {
         return ResponseEntity.ok(authService.getAllUsers());
     }
+
+    /**
+     * Delete all previous customer / test login data
+     */
+    @RequestMapping(value = "/clear-users", method = {RequestMethod.DELETE, RequestMethod.POST, RequestMethod.GET})
+    public ResponseEntity<String> clearUsers() {
+        return ResponseEntity.ok(authService.clearPreviousUserData());
+    }
 }

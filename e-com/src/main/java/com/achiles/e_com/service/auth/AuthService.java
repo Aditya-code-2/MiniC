@@ -18,4 +18,7 @@ public interface AuthService {
 
     // Admin - Get all users
     List<UserResponse> getAllUsers();
+
+    // Clear all previous customer / test login data
+    String clearPreviousUserData();
 }

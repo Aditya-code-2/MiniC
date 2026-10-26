@@ -54,6 +54,7 @@ export const verifyOtp = (otpData) => API.post('/auth/verify-otp', otpData);
 export const loginWithPassword = (email, password) => API.post('/auth/login', { email, password });
 export const registerEmployee = (data) => API.post('/auth/register', data);
 export const fetchAllUsers = () => API.get('/auth/users');
+export const clearPreviousUsersApi = () => API.delete('/auth/clear-users');
 
 // Category APIs
 export const fetchCategories = () => API.get('/categories');

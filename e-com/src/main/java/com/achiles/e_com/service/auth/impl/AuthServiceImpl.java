@@ -2,9 +2,10 @@ package com.achiles.e_com.service.auth.impl;
 
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.transaction.annotation.Transactional;
 import com.achiles.e_com.dto.auth.*;
-import com.achiles.e_com.entity.User;
-import com.achiles.e_com.repository.UserRepository;
+import com.achiles.e_com.entity.*;
+import com.achiles.e_com.repository.*;
 import com.achiles.e_com.service.auth.AuthService;
 import lombok.RequiredArgsConstructor;
 
@@ -19,6 +20,13 @@ import java.util.stream.Collectors;
 public class AuthServiceImpl implements AuthService {
 
     private final UserRepository userRepository;
+    private final CartRepository cartRepository;
+    private final WishlistRepository wishlistRepository;
+    private final OrderRepository orderRepository;
+    private final PaymentRepository paymentRepository;
+    private final AddressRepository addressRepository;
+    private final ReviewRepository reviewRepository;
+    private final OtpTokenRepository otpTokenRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
 
@@ -151,6 +159,71 @@ public class AuthServiceImpl implements AuthService {
         String l = last != null ? last.trim() : "";
         String combined = (f + " " + l).trim();
         return combined.isEmpty() ? "User" : combined;
+    }
+
+    // --- Delete all previous customer / test login data ---
+    @Override
+    @Transactional
+    public String clearPreviousUserData() {
+        List<User> usersToDelete = userRepository.findAll().stream()
+                .filter(u -> !u.getEmail().equalsIgnoreCase(adminEmail))
+                .collect(Collectors.toList());
+
+        int count = usersToDelete.size();
+        for (User u : usersToDelete) {
+            Long uid = u.getId();
+
+            // 1. Delete associated cart
+            try {
+                cartRepository.findByUserId(uid).ifPresent(cartRepository::delete);
+            } catch (Exception ignored) {}
+
+            // 2. Delete associated wishlist
+            try {
+                wishlistRepository.findByUserId(uid).ifPresent(wishlistRepository::delete);
+            } catch (Exception ignored) {}
+
+            // 3. Delete addresses
+            try {
+                List<Address> addresses = addressRepository.findByUserId(uid);
+                if (addresses != null && !addresses.isEmpty()) {
+                    addressRepository.deleteAll(addresses);
+                }
+            } catch (Exception ignored) {}
+
+            // 4. Delete payments & orders
+            try {
+                List<Order> orders = orderRepository.findByUserId(uid);
+                if (orders != null && !orders.isEmpty()) {
+                    for (Order o : orders) {
+                        try {
+                            paymentRepository.findByOrderId(o.getId()).ifPresent(paymentRepository::delete);
+                        } catch (Exception ignored) {}
+                    }
+                    orderRepository.deleteAll(orders);
+                }
+            } catch (Exception ignored) {}
+
+            // 5. Delete reviews
+            try {
+                List<Review> reviews = reviewRepository.findAll().stream()
+                        .filter(r -> r.getUser() != null && r.getUser().getId().equals(uid))
+                        .collect(Collectors.toList());
+                if (!reviews.isEmpty()) {
+                    reviewRepository.deleteAll(reviews);
+                }
+            } catch (Exception ignored) {}
+
+            // 6. Delete user
+            userRepository.delete(u);
+        }
+
+        // 7. Delete OTP tokens
+        try {
+            otpTokenRepository.deleteAll();
+        } catch (Exception ignored) {}
+
+        return "Successfully deleted " + count + " previous user login records and their data.";
     }
 
     // --- Legacy Email OTP stubs ---
