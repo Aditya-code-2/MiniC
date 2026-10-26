@@ -28,22 +28,50 @@ public class AuthServiceImpl implements AuthService {
     @Value("${app.admin.password:Admin@123SecurePass}")
     private String adminPassword;
 
-    // --- Admin Traditional Registration ---
+    // --- Standard Email & Password Registration ---
     @Override
     public AuthResponse register(RegisterRequest request) {
-        if (userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Error: Email is already in use!");
+        String cleanEmail = request.getEmail().trim().toLowerCase();
+
+        Optional<User> existingUserOpt = userRepository.findByEmail(cleanEmail);
+        if (existingUserOpt.isPresent()) {
+            User existingUser = existingUserOpt.get();
+            // If user exists without password, allow setting a password
+            if (existingUser.getPassword() == null || existingUser.getPassword().isBlank()) {
+                existingUser.setPassword(passwordEncoder.encode(request.getPassword()));
+                if (request.getName() != null && !request.getName().isBlank()) {
+                    String nameInput = request.getName().trim();
+                    if (nameInput.contains(" ")) {
+                        String[] parts = nameInput.split(" ", 2);
+                        existingUser.setFirstName(parts[0]);
+                        existingUser.setLastName(parts[1]);
+                    } else {
+                        existingUser.setFirstName(nameInput);
+                        existingUser.setLastName("");
+                    }
+                }
+                User savedUser = userRepository.save(existingUser);
+                String fullName = getFullName(savedUser.getFirstName(), savedUser.getLastName());
+                String token = jwtUtil.generateToken(savedUser.getEmail(), savedUser.getId(), savedUser.getRole().name(), fullName);
+
+                return AuthResponse.builder()
+                        .token(token)
+                        .userId(savedUser.getId())
+                        .name(fullName)
+                        .email(savedUser.getEmail())
+                        .role(savedUser.getRole().name())
+                        .message("Account updated and registered successfully!")
+                        .build();
+            } else {
+                throw new RuntimeException("Error: Email is already registered! Please login.");
+            }
         }
 
         User.Role role = request.getRole() != null ? request.getRole() : User.Role.ROLE_CUSTOMER;
 
-        if (role == User.Role.ROLE_ADMIN && (request.getPassword() == null || request.getPassword().isBlank())) {
-            throw new RuntimeException("Error: Password is required for Admin accounts!");
-        }
-
         String nameInput = request.getName() != null ? request.getName().trim() : "";
         String firstName = nameInput;
-        String lastName = "N/A";
+        String lastName = "";
 
         if (nameInput.contains(" ")) {
             String[] parts = nameInput.split(" ", 2);
@@ -52,37 +80,41 @@ public class AuthServiceImpl implements AuthService {
         }
 
         User user = User.builder()
-                .firstName(firstName)
+                .firstName(firstName.isBlank() ? "User" : firstName)
                 .lastName(lastName)
-                .email(request.getEmail())
-                .password(request.getPassword() != null && !request.getPassword().isBlank() ? passwordEncoder.encode(request.getPassword()) : null)
+                .email(cleanEmail)
+                .password(passwordEncoder.encode(request.getPassword()))
                 .role(role)
                 .build();
 
         User savedUser = userRepository.save(user);
-        String token = jwtUtil.generateToken(savedUser.getEmail(), savedUser.getId(), savedUser.getRole().name(), savedUser.getFirstName() + " " + savedUser.getLastName());
+        String fullName = getFullName(savedUser.getFirstName(), savedUser.getLastName());
+        String token = jwtUtil.generateToken(savedUser.getEmail(), savedUser.getId(), savedUser.getRole().name(), fullName);
 
         return AuthResponse.builder()
                 .token(token)
                 .userId(savedUser.getId())
-                .name(savedUser.getFirstName() + " " + savedUser.getLastName())
+                .name(fullName)
                 .email(savedUser.getEmail())
                 .role(savedUser.getRole().name())
                 .message("User registered successfully!")
                 .build();
     }
 
-    // --- Admin Password Login ---
+    // --- Standard Email & Password Login ---
     @Override
     public AuthResponse login(LoginRequest request) {
-        if (request.getEmail().equals(adminEmail)) {
+        String cleanEmail = request.getEmail().trim().toLowerCase();
+
+        // Admin check
+        if (cleanEmail.equalsIgnoreCase(adminEmail.trim())) {
             if (!request.getPassword().equals(adminPassword)) {
                 throw new RuntimeException("Invalid Admin credentials!");
             }
             String token = jwtUtil.generateToken(adminEmail, 0L, User.Role.ROLE_ADMIN.name(), "Admin");
             return AuthResponse.builder()
                     .token(token)
-                    .userId(0L) // Or fetch if exists in DB
+                    .userId(0L)
                     .name("Admin")
                     .email(adminEmail)
                     .role(User.Role.ROLE_ADMIN.name())
@@ -90,125 +122,52 @@ public class AuthServiceImpl implements AuthService {
                     .build();
         }
 
-        User user = userRepository.findByEmail(request.getEmail())
+        User user = userRepository.findByEmail(cleanEmail)
                 .orElseThrow(() -> new RuntimeException("User not found with email: " + request.getEmail()));
 
         if (user.getPassword() != null && !user.getPassword().isEmpty()) {
             if (!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
-                throw new RuntimeException("Invalid credentials!");
+                throw new RuntimeException("Invalid email or password!");
             }
         } else {
-            throw new RuntimeException("This account uses OTP / OAuth login. Password login not permitted!");
+            throw new RuntimeException("No password set for this account. Please register with a password!");
         }
 
-        String token = jwtUtil.generateToken(user.getEmail(), user.getId(), user.getRole().name(), user.getFirstName() + " " + user.getLastName());
+        String fullName = getFullName(user.getFirstName(), user.getLastName());
+        String token = jwtUtil.generateToken(user.getEmail(), user.getId(), user.getRole().name(), fullName);
 
         return AuthResponse.builder()
                 .token(token)
                 .userId(user.getId())
-                .name(user.getFirstName() + " " + user.getLastName())
+                .name(fullName)
                 .email(user.getEmail())
                 .role(user.getRole().name())
                 .message("User logged in successfully!")
                 .build();
     }
 
-    // --- Customer: Send Email OTP ---
+    private String getFullName(String first, String last) {
+        String f = first != null ? first.trim() : "";
+        String l = last != null ? last.trim() : "";
+        String combined = (f + " " + l).trim();
+        return combined.isEmpty() ? "User" : combined;
+    }
+
+    // --- Legacy Email OTP stubs ---
     @Override
     public String sendEmailOtp(SendEmailOtpRequest request) {
-        // 1. Generate 6-digit random OTP
-        String otp = String.valueOf((int) ((Math.random() * (900000)) + 100000));
-
-      
-        return "OTP sent successfully to " + request.getEmail();
+        return "OTP service is deprecated. Please use Email and Password login.";
     }
 
-    // --- Customer: Verify Email OTP & Login/Register ---
     @Override
     public AuthResponse verifyEmailOtp(VerifyEmailOtpRequest request) {
-       
-
-        Optional<User> existingUser = userRepository.findByEmail(request.getEmail());
-
-        User user;
-        if (existingUser.isPresent()) {
-            user = existingUser.get();
-        } else {
-            user = User.builder()
-                    .firstName("User")
-                    .lastName("Account")
-                    .email(request.getEmail())
-                    .role(User.Role.ROLE_CUSTOMER) // Default role
-                    .build();
-            user = userRepository.save(user);
-        }
-
-        String token = jwtUtil.generateToken(user.getEmail(), user.getId(), user.getRole().name(), user.getFirstName() + " " + user.getLastName());
-
-        return AuthResponse.builder()
-                .token(token)
-                .userId(user.getId())
-                .name(user.getFirstName() + " " + user.getLastName())
-                .email(user.getEmail())
-                .role(user.getRole().name())
-                .message("OTP Verified successfully!")
-                .build();
+        throw new UnsupportedOperationException("OTP login is deprecated. Please use Email and Password login.");
     }
 
-    // --- Customer: Google OAuth Login ---
+    // --- Legacy Google Login stub ---
     @Override
     public AuthResponse loginWithGoogle(GoogleLoginRequest request) {
-        
-        Optional<User> existingUser = userRepository.findByEmail(request.getEmail());
-
-        User user;
-        if (existingUser.isPresent()) {
-            user = existingUser.get();
-           
-            if (user.getGoogleId() == null) {
-                user.setGoogleId(request.getGoogleId());
-                if (request.getProfilePic() != null) {
-                    user.setProfilePic(request.getProfilePic());
-                }
-                userRepository.save(user);
-            }
-        } else {
-            // Dynamic Role Selection (Customer)
-            User.Role assignedRole = User.Role.ROLE_CUSTOMER;
-
-            // Dynamic Name Split Logic
-            String nameInput = request.getName() != null ? request.getName().trim() : "Google User";
-            String firstName = nameInput;
-            String lastName = "N/A";
-
-            if (nameInput.contains(" ")) {
-                String[] parts = nameInput.split(" ", 2);
-                firstName = parts[0];
-                lastName = parts[1];
-            }
-
-            user = User.builder()
-                    .firstName(firstName)
-                    .lastName(lastName)
-                    .email(request.getEmail())
-                    .googleId(request.getGoogleId())
-                    .profilePic(request.getProfilePic())
-                    .role(assignedRole)
-                    .build();
-
-            user = userRepository.save(user);
-        }
-
-        String token = jwtUtil.generateToken(user.getEmail(), user.getId(), user.getRole().name(), user.getFirstName() + " " + user.getLastName());
-
-        return AuthResponse.builder()
-                .token(token)
-                .userId(user.getId())
-                .name(user.getFirstName() + " " + user.getLastName())
-                .email(user.getEmail())
-                .role(user.getRole().name())
-                .message("Google login successful!")
-                .build();
+        throw new UnsupportedOperationException("Google Login is disabled. Please use Email and Password login.");
     }
 
     // Admin - Get all users
